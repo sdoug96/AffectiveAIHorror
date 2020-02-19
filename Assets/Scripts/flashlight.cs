@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class flashlight : MonoBehaviour
 {
-    public GameObject flashlightObj;
     public GameObject lightObj;
+    public AudioSource onOffClick;
 
-    bool flashlightEnabled;
+    bool flashlightEnabled = true;
 
     // Start is called before the first frame update
     void Start()
@@ -18,18 +18,19 @@ public class flashlight : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("joystick button 0"))
+        if (Input.GetButtonDown("Flashlight Controller"))
         {
             flashlightEnabled = !flashlightEnabled;
+            onOffClick.Play();
         }
 
         if (flashlightEnabled)
         {
-            flashlightObj.SetActive(true);
+            lightObj.SetActive(true);
         }
         else
         {
-            flashlightObj.SetActive(false);
+            lightObj.SetActive(false);
         }
     }
 }

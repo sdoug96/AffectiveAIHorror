@@ -7,15 +7,13 @@ public class playerMovement : MonoBehaviour
     public CharacterController controller;
     public AudioSource footsteps;
 
-    public float speed = 12.0f;
+    public float moveSpeed = 1.0f;
     public float gravity = -9.81f;
 
-    public Transform groundCheck;
-    public float groundDistance = 0.4f;
-    public LayerMask groundMask;
-
     Vector3 velocity;
-    bool isGrounded, crouched = false;
+
+    private bool crouched = false;
+    public bool hasKey = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,15 +21,13 @@ public class playerMovement : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Check if the player is grounded
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-
         //If player presses the circle button
-        if (Input.GetKeyDown("joystick button 2"))
+        if (Input.GetButtonDown("Crouch Controller"))
         {
+            Debug.Log("Crouched");
+
             //If player is crouched, stand up
             if (crouched)
             {
@@ -45,22 +41,32 @@ public class playerMovement : MonoBehaviour
                 crouched = true;
             }
         }
+    }
 
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         //If player is on ground and not moving, set velocity to -2 (works better)
-        if (isGrounded && velocity.y < 0)
+        if (controller.isGrounded && velocity.y < 0)
         {
             velocity.y = -2.0f;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float x = Input.GetAxis("Horizontal Controller");
+        float z = Input.GetAxis("Vertical Controller");
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * speed * Time.deltaTime);
+        controller.Move(move * moveSpeed * Time.deltaTime);
 
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        //Play footstep sound if player is moving
+        if (move.magnitude == 0)
+        {
+            footsteps.Play();
+        }
     }
 }
