@@ -6,13 +6,14 @@ public class playerMovement : MonoBehaviour
 {
     public CharacterController controller;
     public AudioSource footsteps;
+    public AudioSource keySound;
 
     public float moveSpeed = 1.0f;
     public float gravity = -9.81f;
 
     Vector3 velocity;
 
-    private bool crouched = false;
+    public bool crouched = false;
     public bool hasKey = false;
 
     // Start is called before the first frame update

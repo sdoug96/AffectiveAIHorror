@@ -8,6 +8,7 @@ public class door : MonoBehaviour
     private Animator animator;
     public AudioSource openSound;
     public AudioSource lockedSound;
+    public AudioSource unlockedSound;
     public GameObject openText = null;
     public GameObject lockedText = null;
     public playerMovement player;
@@ -58,11 +59,11 @@ public class door : MonoBehaviour
         //If player is in range of door
         if (Input.GetButtonDown("Interact Controller"))
         {
-            OpenDoor();
+            QueryDoor();
         }
     }
 
-    void OpenDoor()
+    void QueryDoor()
     {
         //If the door is unlocked
         if (!isOpen)
@@ -76,20 +77,38 @@ public class door : MonoBehaviour
                 if (!isLocked)
                 {
                     //Set is open, play animation, play audio
-                    isOpen = !isOpen;
-                    animator.SetBool("open", true);
-                    openSound.Play();
-                    //Debug.Log("Door Opened");
+                    OpenDoor();
                 }
                 //Door is locked
                 else
                 {
-                    //Show locked prompt, play audio and take key from player
-                    lockedText.SetActive(true);
-                    lockedSound.Play();
-                    //Debug.Log("Door Locked");
+                    if (player.hasKey)
+                    {
+                        //Play unlocked audio
+                        unlockedSound.Play();
+
+                        //Open door when unlocked audio is finished
+                        Invoke("OpenDoor", 0.5f);
+
+                        //take key from player
+                        player.hasKey = false;
+                    }
+                    else
+                    {
+                        //Show locked prompt, play audio
+                        lockedText.SetActive(true);
+                        lockedSound.Play();
+                    }
                 }
             }
         }
+    }
+
+    void OpenDoor()
+    {
+        //Set is open, play animation, play audio
+        isOpen = !isOpen;
+        animator.SetBool("open", true);
+        openSound.Play();
     }
 }
