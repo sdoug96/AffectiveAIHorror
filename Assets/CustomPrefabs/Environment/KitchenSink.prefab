@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 1026714182488638140}
   - component: {fileID: -2072119607158251769}
   m_Layer: 0
-  m_Name: kitchen sink HP
+  m_Name: KitchenSink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,8 +206,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3878183, y: 0.2345519, z: 0.7130127}
+  m_Center: {x: -0.30304193, y: 0.2253052, z: 1.4711742}
 --- !u!1 &5827671457466715945
 GameObject:
   m_ObjectHideFlags: 0

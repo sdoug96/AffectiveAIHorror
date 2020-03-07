@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4856336461430574}
-  - component: {fileID: -3742994618651328250}
+  - component: {fileID: -2627092002643010806}
   - component: {fileID: -5916713561368048533}
   - component: {fileID: -5879788471654101118}
   - component: {fileID: -54210334190804576}
   - component: {fileID: 7865497313229973772}
-  - component: {fileID: -2627092002643010806}
+  - component: {fileID: -3742994618651328250}
   m_Layer: 0
-  m_Name: P_Door_01_
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,19 +38,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &-3742994618651328250
-BoxCollider:
+--- !u!114 &-2627092002643010806
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257244082436250}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.2706063, y: 2.6131573, z: 4.195903}
-  m_Center: {x: 0.6063069, y: 1.3315662, z: -0.02294588}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9337a27c5b56e8b48826eabd37c4f4ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openSound: {fileID: 0}
+  lockedSound: {fileID: 0}
+  unlockedSound: {fileID: 0}
+  player: {fileID: 0}
+  isLocked: 0
+  left: 0
 --- !u!95 &-5916713561368048533
 Animator:
   serializedVersion: 3
@@ -358,26 +363,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-2627092002643010806
-MonoBehaviour:
+--- !u!65 &-3742994618651328250
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257244082436250}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9337a27c5b56e8b48826eabd37c4f4ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openSound: {fileID: 0}
-  lockedSound: {fileID: 0}
-  unlockedSound: {fileID: 0}
-  openText: {fileID: 0}
-  lockedText: {fileID: 0}
-  player: {fileID: 0}
-  isLocked: 0
-  left: 0
+  serializedVersion: 2
+  m_Size: {x: 1.2706063, y: 2.6131573, z: 4.195903}
+  m_Center: {x: 0.6063069, y: 1.3315662, z: -0.02294588}
 --- !u!1 &1754945289371740
 GameObject:
   m_ObjectHideFlags: 0
