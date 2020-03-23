@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class affectiveAIFuzzyLogic : MonoBehaviour
 {
+    public playerEmotions emotions;
+
     // Start is called before the first frame update
     void Start()
     {
