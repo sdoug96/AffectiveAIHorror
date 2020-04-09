@@ -12,7 +12,7 @@ public class door : MonoBehaviour
     public playerMovement player;
 
     private bool isOpen = false, active = false;
-    public bool isLocked = false, left = false, right = false, back = false;
+    public bool isLocked = false, left = false, right = false, back = false, end = false;
 
     // Start is called before the first frame update
     void Start()
@@ -76,7 +76,7 @@ public class door : MonoBehaviour
                 //Door is unlocked
                 if (!isLocked)
                 {
-                    //Set is open, play animation, play audio
+                    //Open door
                     OpenDoor();
                 }
                 //Door is locked
@@ -92,6 +92,13 @@ public class door : MonoBehaviour
 
                         //take key from player
                         player.hasKey = false;
+
+                        //If this is the last door
+                        if (end)
+                        {
+                            //End application
+                            Invoke("QuitApplication", 0.5f);
+                        }
                     }
                     else
                     {
@@ -109,5 +116,10 @@ public class door : MonoBehaviour
         isOpen = !isOpen;
         animator.SetBool("open", true);
         openSound.Play();
+    }
+
+    void QuitApplication()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }

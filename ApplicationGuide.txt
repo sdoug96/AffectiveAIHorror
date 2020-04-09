@@ -1,0 +1,32 @@
+This is a short guide explaining how the application works and how to play
+
+
+How to play
+
+
+The application contains 3 main sections each with a corridor section and side room. A key is hidden in each of these sections which will
+be needed to unlock the next sction.
+
+
+The player will start in corridor section 1 and their task is to locate the key to unlock the second section and so on.
+
+
+A controller is needed to use the application as this is the only form of input that is accepted.
+
+
+Once the player has found all three keys and unlocked the final door the application will end.
+
+
+Application features
+
+
+The main feature of this application is the affective AI that the user can choose whether or not to have running.
+
+
+The affective AI contains a state machine system and a fuzzy logic system which are largely similar with the fuzzy logic offering a little
+more in terms of gameplay changes.
+
+
+Both systems will use facial recognition and the players heart rate to monitor the players fear and change the gameplay based on this.
+
+
