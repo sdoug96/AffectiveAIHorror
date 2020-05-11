@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO.Ports;
+using UnityEngine.UI;
 using UnityEngine;
+
+//This script is responsible for reading in the player's heartrate data from the Arduino script using a serial port
 
 public class heartRateMonitor : MonoBehaviour
 {
+    //Serial port to communicate with Arduino
     SerialPort arduinoHeartrateMonitor;
 
     //Bool to turn the heartrate monitor on or off
@@ -13,8 +17,8 @@ public class heartRateMonitor : MonoBehaviour
     //Beats per minute variable
     public int BPM = 60;
 
-    //Test value whilst getting Arduino value reading properly
-    public int testBPM = 75;
+    //Warning to show player if no heartrate is detected
+    public Text noBPMText;
 
     //Start is called before the first frame update
     void Start()
@@ -22,7 +26,7 @@ public class heartRateMonitor : MonoBehaviour
         if (active)
         {
             //Intialise heart rate monitor from Arduino IDE
-            arduinoHeartrateMonitor = new SerialPort("COM5", 115200);
+            arduinoHeartrateMonitor = new SerialPort("COM6", 115200);
 
             arduinoHeartrateMonitor.Open();
             arduinoHeartrateMonitor.ReadTimeout = 1;
@@ -32,17 +36,30 @@ public class heartRateMonitor : MonoBehaviour
     //Update is called once per frame
     void Update()
     {
-        //Debug.Log(testBPM);
-
+        //If heartrate monitor is active
         if (active)
         {
             try
             {
-                //This will take the heart rate data read in as a string and convert it to an integer
-                int.TryParse(arduinoHeartrateMonitor.ReadLine(), out BPM);
+                //Parse string read in from Arduino to integer to use in AI systems
+                //BPM will default to 0 if no heartrate is detected
+                BPM = int.Parse(arduinoHeartrateMonitor.ReadLine());
             }
             catch (System.Exception)
             {
+            }
+
+            //If no heartrate is detected
+            if (BPM == 0)
+            {
+                //Show warning and disable input
+                noBPMText.gameObject.SetActive(true);
+            }
+            //If a heartrate is detected
+            else
+            {
+                //Remove warning and re-enable input
+                noBPMText.gameObject.SetActive(false);
             }
         }
     }

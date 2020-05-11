@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//This script is responsible for handling the key logic within the application
+//If a player is in range and presses the interact button, they will pick up this key
+
 public class key : MonoBehaviour
 {
     public playerMovement player;
@@ -29,7 +32,6 @@ public class key : MonoBehaviour
         if (other.tag == "Player")
         {
             //Set active
-            Debug.Log("Key Found");
             active = !active;
         }
     }

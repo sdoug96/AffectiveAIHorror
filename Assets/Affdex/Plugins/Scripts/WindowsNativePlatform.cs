@@ -67,7 +67,7 @@ namespace Affdex
             h3 = GCHandle.Alloc(imageResults, GCHandleType.Pinned);
 
             int status = affdexRegisterListeners(nativeHandle, imageResults, faceFound, faceLost);
-            Debug.Log("Registered listeners: " + status);
+            //Debug.Log("Registered listeners: " + status);
             yield break;
         }
 
@@ -107,7 +107,7 @@ namespace Affdex
 
         public override int StartDetector()
         {
-            Debug.Log("WindowsNativePlatform.StartDetector");
+            //Debug.Log("WindowsNativePlatform.StartDetector");
             int result = affdexStart(nativeHandle);
             if (result != 1)
             {

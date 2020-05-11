@@ -4,53 +4,75 @@ using UnityEngine;
 
 public class affectiveAIStateMachine : MonoBehaviour
 {
+    //This will control whether or not the state machine is running
+    //The game alter script will control which, if any, of the AI systems are running during gameplay
+    public bool active = false;
+
+    //Visual and physiological values for state machine
     public playerEmotions emotions;
     public heartRateMonitor HRM;
 
-    enum EmotionalState
+    //Enum of different emotional states
+    public enum EmotionalState
     {
         Neutral,
         Disengaged,
-        Bored,
-        Scared
+        Calm,
+        Scared,
+        VeryScared
     };
 
     //Emotional state variable
-    EmotionalState emotionalState;
+    public EmotionalState emotionalState;
 
-    // Start is called before the first frame update
+    //Start is called before the first frame update
     void Start()
     {
-        //Initialise emotional state to neutral
+        //Initialise emotional state to bored
         emotionalState = EmotionalState.Neutral;
     }
 
-    // Update is called once per frame
+    //Update is called once per frame
     void Update()
     {
-        //Run the state machine
-        StateMachineLogic();
+        if (active)
+        {
+            //Run the state machine
+            StateMachineLogic();
+        }
     }
 
     void StateMachineLogic()
     {
-        //If the player's heart rate is above 80 and current fear is above 0.5
-        if ((HRM.testBPM > 80) && (emotions.currentFear > 0.5f) && (emotions.currentAttention > 0.75f))
+        //If heartrate is above 120 and attention above 80
+        if ((HRM.BPM >= 120) && (emotions.currentAttention >= 80.0f))
         {
-            //Change emotional state to scared
+            //Player is very scared
+            emotionalState = EmotionalState.VeryScared;
+        }
+        //If heartrate is between 100 and 120 and attention is above 80
+        else if((HRM.BPM < 120) && (HRM.BPM > 100) && (emotions.currentAttention >= 80.0f))
+        {
+            //Player is scared
             emotionalState = EmotionalState.Scared;
         }
-        //If the player's heart rate is lower than 80, fear is less than 0.5 but attention is still higher than 0.75
-        else if((HRM.testBPM < 80) && (emotions.currentFear < 0.5f) && (emotions.currentAttention > 0.75f))
+        //If heartrate is lower than 100 and attention is above 80
+        else if ((HRM.BPM < 100) && (emotions.currentAttention >= 80.0f))
         {
-            //Change emotional state to bored
-            emotionalState = EmotionalState.Bored;
+            //Player is calm
+            emotionalState = EmotionalState.Calm;
         }
-        //If the player's attention is lower than 0.75
-        else if(emotions.currentAttention < 0.75f)
+        //If attention is below 80
+        else if (emotions.currentAttention < 80.0f)
         {
-            //Change emotional state to disengaged
+            //Player is disengaged
             emotionalState = EmotionalState.Disengaged;
+        }
+        //If no other state conditions are met (should never be called)
+        else
+        {
+            //Default state to neutral
+            emotionalState = EmotionalState.Neutral;
         }
     }
 }
