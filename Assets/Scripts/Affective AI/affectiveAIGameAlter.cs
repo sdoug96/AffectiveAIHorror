@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//This script is responsible for holdingall of the logic for the various different jumpscares contained within the application
+//This script is responsible for holding all of the logic for the various different jumpscares contained within the application
 //The play jumpscare script will call the relevant jumpscare from here using an ID
 
 public class affectiveAIGameAlter : MonoBehaviour
 {
-    //public AudioSource backgroundMusic;
-
     //Flashlight flicker variables
     public GameObject flashlight;
     public Animator flashlightAnim;
@@ -47,10 +45,8 @@ public class affectiveAIGameAlter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Change volume of music based on fuzzy output
     }
 
-    //Minor jumpscare
     public void FlashlightFlicker()
     {
         //Play flashlight flicker and audio
@@ -58,7 +54,6 @@ public class affectiveAIGameAlter : MonoBehaviour
         flashlightAnim.Play("Flicker");
     }
 
-    //Major jumpscare
     public void LightsJumpscare()
     {
         //Turn off lights, temp turn off flashlight and play audio
@@ -70,7 +65,6 @@ public class affectiveAIGameAlter : MonoBehaviour
         lightsSound.Play();
     }
 
-    //Minor jumpscare
     public void SpotlightJumpscare()
     {
         //Turn on spotlight and play audio
@@ -78,7 +72,6 @@ public class affectiveAIGameAlter : MonoBehaviour
         spotlightSound.Play();
     }
 
-    //Major jumpscare
     public void LaunchTrolleyJumpscare()
     {
         //Launch bed towards player and play audio
@@ -86,7 +79,6 @@ public class affectiveAIGameAlter : MonoBehaviour
         launchSound.Play();
     }
 
-    //Minor jumpscare
     public void LaunchChairJumpscare()
     {
         //Launch chair and play audio
@@ -94,7 +86,6 @@ public class affectiveAIGameAlter : MonoBehaviour
         launchSound.Play();
     }
 
-    //Minor jumpscare
     public void LaunchDoorJumpscare()
     {
         //Launch door and play audio

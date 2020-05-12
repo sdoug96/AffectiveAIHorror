@@ -6,8 +6,7 @@ using UnityEngine;
 
 public class affectiveAIFuzzyLogic : MonoBehaviour
 {
-    //This will control whether or not the state machine is running
-    //The game alter script will control which, if any, of the AI systems are running during gameplay
+    //This will control whether or not the fuzzy logic system is running
     public bool active = false;
 
     //Visual and physiological values for fuzzy logic system
@@ -28,7 +27,7 @@ public class affectiveAIFuzzyLogic : MonoBehaviour
     {
         if (active)
         {
-            //Setup the heartrate input for FIS
+            //Setup the heartrate input and membership functions
             var heartrate = new LinguisticVariable("Heartrate");
             var veryHighH = heartrate.MembershipFunctions.AddTrapezoid("VeryHighH", 120.0f, 140.0f, 160.0f, 160.0f);
             var highH = heartrate.MembershipFunctions.AddTriangle("HighH", 100.0f, 120.0f, 140.0f);
@@ -36,13 +35,13 @@ public class affectiveAIFuzzyLogic : MonoBehaviour
             var lowH = heartrate.MembershipFunctions.AddTriangle("LowH", 20.0f, 40.0f, 60.0f);
             var veryLowH = heartrate.MembershipFunctions.AddTrapezoid("VeryLowH", 0.0f, 0.0f, 20.0f, 40.0f);
 
-            //Setup the attention input for FIS
+            //Setup the attention input and membership functions
             var attention = new LinguisticVariable("Attention");
             var highA = attention.MembershipFunctions.AddTriangle("HighA", 50.0f, 75.0f, 100.0f);
             var averageA = attention.MembershipFunctions.AddTriangle("AverageA", 25.0f, 50.0f, 75.0f);
             var lowA = attention.MembershipFunctions.AddTriangle ("LowA", 0.0f, 25.0f, 50.0f);
 
-            //Setup the fear output for FIS
+            //Setup the fear output and membership functions
             var fear = new LinguisticVariable("Fear");
             var veryHighF = fear.MembershipFunctions.AddTrapezoid("VeryHighF", 70.0f, 90.0f, 100.0f, 100.0f);
             var highF = fear.MembershipFunctions.AddTriangle("HighF", 50.0f, 70.0f, 90.0f);

@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class mouseLook : MonoBehaviour
 {
+    //References
     public heartRateMonitor HRM;
     public playerEmotions emotions;
-
-    public float sensitivity = 200.0f;
-
     public Transform player;
 
+    //Look sensitivity
+    public float sensitivity = 200.0f;
+
+    //X rotation of camera
     float xRotation = 0.0f;
 
+    //Can look around
     public bool canLook = true;
 
     //Start is called before the first frame update

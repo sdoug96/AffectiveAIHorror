@@ -7,8 +7,8 @@ using UnityEngine;
 
 public class keyLocations : MonoBehaviour
 {
+    //References
     public affectiveAIStateMachine stateMachine;
-
     public affectiveAIFuzzyLogic fuzzy;
 
     //Key game objects
@@ -17,20 +17,21 @@ public class keyLocations : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Key locations for state machine
         if (stateMachine.active)
         {
             keys[0].transform.position = new Vector3(-2.433f, 1.369f, 8.828f);
             keys[1].transform.position = new Vector3(7.446f, 2.366f, 99.98f);
             keys[2].transform.position = new Vector3(-22.058f, 2.012f, 154.329f);
         }
-
+        //Key locations for fuzzy logic
         else if (fuzzy.active)
         {
             keys[0].transform.position = new Vector3(-29.536f, 2.041f, 46.906f);
             keys[1].transform.position = new Vector3(9.046f, 0.289f, 79.737f);
             keys[2].transform.position = new Vector3(-5.89f, 1.501f, 161.626f);
         }
-
+        //Key locations for no AI
         else
         {
             keys[0].transform.position = new Vector3(-28.436f, 1.333f, 38.57292f);

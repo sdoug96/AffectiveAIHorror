@@ -4,7 +4,7 @@ using System.IO.Ports;
 using UnityEngine.UI;
 using UnityEngine;
 
-//This script is responsible for reading in the player's heartrate data from the Arduino script using a serial port
+//This script is responsible for reading in the player's heartrate data from the Arduino script using the same communication port
 
 public class heartRateMonitor : MonoBehaviour
 {

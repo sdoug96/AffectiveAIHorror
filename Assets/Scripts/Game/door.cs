@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class door : MonoBehaviour
 {
+    //References
     private Animator animator;
     public AudioSource openSound;
     public AudioSource lockedSound;
@@ -16,8 +17,10 @@ public class door : MonoBehaviour
     public playerMovement player;
     public puzzleTimesAndAttention timesAndAttention;
 
+    //This will determine which puzzle time is recorded
     public int puzzleID = 0;
 
+    //Various bools for different logic
     private bool isOpen = false, active = false;
     public bool isLocked = false, left = false, right = false, back = false, end = false;
 

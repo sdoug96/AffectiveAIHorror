@@ -55,7 +55,7 @@ public class playJumpscare : MonoBehaviour
             if (fuzzy.active)
             {
                 //If fuzzy crisp output is below certain value (ie player is not scared already)
-                if (true)
+                if (fuzzy.crispOutput < 70.0f)
                 {
                     //Play jumpscare and destroy trigger
                     callJumpscare();

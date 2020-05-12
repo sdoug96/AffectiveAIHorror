@@ -9,6 +9,7 @@ using UnityEngine;
 
 public class puzzleTimesAndAttention : MonoBehaviour
 {
+    //References
     public playerMovement movement;
     public mouseLook look;
     public playerEmotions emotions;

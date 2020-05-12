@@ -5,7 +5,6 @@ using UnityEngine;
 public class affectiveAIStateMachine : MonoBehaviour
 {
     //This will control whether or not the state machine is running
-    //The game alter script will control which, if any, of the AI systems are running during gameplay
     public bool active = false;
 
     //Visual and physiological values for state machine

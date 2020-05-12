@@ -7,8 +7,10 @@ using UnityEngine;
 
 public class key : MonoBehaviour
 {
+    //References
     public playerMovement player;
 
+    //Can key be picked up
     private bool active = false;
 
     // Start is called before the first frame update
@@ -44,6 +46,7 @@ public class key : MonoBehaviour
 
     void PickupKey()
     {
+        //If key can be picked up
         if (active)
         {
             //Give player key, play sound and destroy object

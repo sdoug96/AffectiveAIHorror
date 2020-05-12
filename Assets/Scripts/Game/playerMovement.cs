@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class playerMovement : MonoBehaviour
 {
+    //References
     public heartRateMonitor HRM;
     public playerEmotions emotions;
 
@@ -14,13 +15,17 @@ public class playerMovement : MonoBehaviour
     public AudioSource footsteps;
     public AudioSource keySound;
 
+    //Move speed and gravity
     public float moveSpeed = 1.0f;
     public float gravity = -9.81f;
 
+    //Velocity vector
     Vector3 velocity;
 
+    //Can move around
     public bool canMove = true;
 
+    //Does player have key
     public bool hasKey = false;
 
     // Start is called before the first frame update
@@ -54,6 +59,7 @@ public class playerMovement : MonoBehaviour
             velocity.y = -2.0f;
         }
 
+        //If player can move around
         if (canMove)
         {
             //Movement values based on controller left joystick input
@@ -75,8 +81,10 @@ public class playerMovement : MonoBehaviour
                 footsteps.Play();
             }
         }
+        //If player cannot move around
         else
         {
+            //Stop footsteps sound
             footsteps.Stop();
         }
     }
