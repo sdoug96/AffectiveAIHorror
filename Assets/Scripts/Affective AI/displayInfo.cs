@@ -44,8 +44,9 @@ public class displayInfo : MonoBehaviour
             BPM = HRM.BPM;
             BPMText.text = "BPM: " + BPM;
 
-            //Set and display fuzzy crisp output
-            fuzzyOutput = fuzzy.crispOutput;
+            //Set and display fuzzy crisp output, also round to 2 decimal places
+            fuzzyOutput = (float)fuzzy.crispOutput;
+            fuzzyOutput = Mathf.Round(fuzzyOutput * 100f) / 100f;
             stateOrFuzzyOutput.text = "CRISP FUZZY OUTPUT: " + fuzzyOutput;
 
             //Display fuzzy logic is active
